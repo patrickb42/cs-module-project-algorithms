@@ -3,9 +3,17 @@ Input: a List of integers
 Returns: a List of integers
 '''
 def moving_zeroes(arr):
-    filtered_arr = list(filter(lambda item: item != 0, arr))
-    filtered_arr.extend([0] * (len(arr) - len(filtered_arr)))
-    return filtered_arr
+    j = len(arr) - 1
+    for index, item in enumerate(arr):
+        if index > j:
+            break
+        if item == 0:
+            while arr[j] == 0 and j > index:
+                j -= 1
+            if index < j:
+                arr[index] = arr[j]
+                arr[j] = 0
+    return arr
 
 
 if __name__ == '__main__':
