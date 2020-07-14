@@ -3,9 +3,13 @@ Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
 def single_number(arr):
-    # Your code here
-
-    pass
+    tracker = set()
+    for item in arr:
+        if item in tracker:
+            tracker.remove(item)
+        else:
+            tracker.add(item)
+    return [item for item in tracker][0]
 
 
 if __name__ == '__main__':
